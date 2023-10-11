@@ -1,0 +1,34 @@
+$primary: #0a4d68;
+$secondary: #41965b;
+$success: #0fb15f;
+$info: #fdb72b;
+$warning: #eacd0e;
+$danger: #fb0516;
+$light: #d6e7fa;
+$dark: #000919;
+$cyan: #0dcaf0;
+
+$white: #FFFFFF;
+$black: #000000;
+
+$dark: #0b0a0b;
+$dark5: lighten($dark, 5%);
+
+$light: #F3F3F3;
+$light20: darken($light, 20%);
+$light40: darken($light, 40%);
+$light60: darken($light, 60%);
+$light80: darken($light, 80%);
+$faded: darken($light, 40%);
+
+$theme-colors: (
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $light,
+        "dark":       $dark,
+        "cyan":       $cyan,
+);

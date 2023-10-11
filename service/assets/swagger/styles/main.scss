@@ -1,0 +1,53 @@
+header {
+    background-color: #312b2c;
+    position: relative;
+    padding: 2rem;
+
+    &:before {
+        display: none;
+    }
+
+    #logo {
+        position: absolute;
+        top: auto;
+        right: 1rem;
+        z-index: 0;
+        transform: translateY(-50%);
+    }
+
+    .row {
+        width: 100%;
+        max-width: 1460px;
+        padding: 0 50px;
+        margin: 0 auto;
+        display: flex;
+        .column {
+            &-wide {
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+.swagger-ui
+{
+    @import 'mixins';
+    @import 'variables';
+    @import 'type';
+    @import 'layout';
+    @import 'buttons';
+    @import 'form';
+    @import 'modal';
+    @import 'models';
+    @import 'servers';
+    @import 'table';
+    @import 'topbar';
+    @import 'information';
+    @import 'authorize';
+    @import 'errors';
+    @include text_body();
+    @import 'split-pane-mode';
+    @import 'markdown';
+    margin-bottom: 5rem;
+    font-family: 'Open Sans', sans-serif !important;
+}

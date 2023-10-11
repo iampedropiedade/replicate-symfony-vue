@@ -1,0 +1,67 @@
+version: '3.5'
+
+services:
+  web:
+    build:
+      context: '.'
+      args:
+        uid: ${UID}
+    container_name: ${DOCKER_NAME}_app
+    environment:
+      - APACHE_RUN_USER=#${UID}
+      - APACHE_RUN_GROUP=#${UID}
+    volumes:
+      - dashboard_nfsmount:/var/www/html
+      - ./docker/apache2/sites-available:/etc/apache2/sites-available:cached
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini:cached
+    ports:
+      - 8098:80
+    networks:
+      - replicate
+
+  mysql-db:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=app
+    ports:
+      - '3311:3306'
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --sql_mode=
+    container_name: ${DOCKER_NAME}_db
+    networks:
+      - replicate
+
+  mercure:
+    image: dunglas/mercure
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: ':80'
+      DEMO: 1
+      DEBUG: 1
+      MERCURE_PUBLISHER_JWT_KEY: 'UJtNt9ZwXSp9evxCWELpTajBdSJWapdkhCzeGWuK4jEokdsK'
+      MERCURE_SUBSCRIBER_JWT_KEY: 'UJtNt9ZwXSp9evxCWELpTajBdSJWapdkhCzeGWuK4jEokdsK'
+      # Set the URL of your Symfony project (without trailing slash!) as value of the cors_origins directive
+      MERCURE_EXTRA_DIRECTIVES: "cors_origins http://127.0.0.1:8098 https://43ca-2001-818-db86-5900-9014-57c0-f1c8-6767.ngrok-free.app"
+    ports:
+      - '8101:80'
+    # Comment the following line to disable the development mode
+    command: /usr/bin/caddy run --config /etc/caddy/Caddyfile.dev
+    container_name: ${DOCKER_NAME}_mercure
+    volumes:
+      - ./docker/mercure_data:/data
+      - ./docker/mercure_config:/config
+
+volumes:
+  dashboard_nfsmount:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":${PWD}/service"
+
+networks:
+  replicate:

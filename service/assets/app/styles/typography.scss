@@ -1,0 +1,9 @@
+@import "./variables/colors.scss";
+
+.text-light-20 {
+  color: $light20;
+}
+
+.text-light-20:hover {
+  color: $light;
+}

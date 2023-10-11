@@ -1,0 +1,5 @@
+docker/mysql
+docker/mariadb
+docker/mercure_data
+*.idea/
+*.DS_Store

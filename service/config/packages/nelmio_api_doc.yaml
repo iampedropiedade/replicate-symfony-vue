@@ -1,0 +1,73 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: My API
+            description: My API
+            version: 1.0.0
+        servers:
+            - url: http://localhost:8099/
+
+        paths:
+            /token:
+                post:
+                    tags:
+                        - API Authentication
+                    summary: API Authentication
+                    requestBody:
+                        description: Authenticate and authorize an API client (client_credentials) or a User (password)
+                        required: true
+                        content:
+                            application/x-www-form-urlencoded:
+                                encoding:
+                                    scope:
+                                        style: spaceDelimited
+                                schema:
+                                    type: object
+                                    properties:
+                                        client_id:
+                                            type: string
+                                            example: dashboard
+                                        client_secret:
+                                            type: string
+                                        grant_type:
+                                            type: string
+                                            enum:
+                                                - client_credentials
+                                                - password
+                                                - refresh_token
+                                            example: client_credentials
+                                        scope:
+                                            type: array
+                                            items:
+                                                type: string
+                                                enum:
+                                                    - APPLICATION
+                                        username:
+                                            type: string
+                                        password:
+                                            type: string
+                                        refresh_token:
+                                            type: string
+                                    required:
+                                        - client_id
+                                        - client_secret
+                                        - grant_type
+                                        - scope
+
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+            parameters:
+                switch-user:
+                    name: "x-switch-user"
+                    in: "header"
+                    description: 'Email of the user to be impersonated'
+                    schema: { type: 'string' }
+        security:
+            - Bearer: [ ]
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?:(?!doc$)(?!doc.json).)*$ # Accepts routes under /api except /api/doc

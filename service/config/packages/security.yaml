@@ -1,0 +1,55 @@
+security:
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    role_hierarchy:
+        ROLE_OAUTH2:
+            - ROLE_OAUTH2_APPLICATION
+        ROLE_WEBSITE_USER:
+            - ROLE_USER
+            - ROLE_OAUTH2
+        ROLE_DASHBOARD_USER:
+            - ROLE_WEBSITE_USER
+            - ROLE_ADMIN
+            - ROLE_ALLOWED_TO_SWITCH
+            - ROLE_MANAGE_USERS
+        ROLE_DASHBOARD_ADMIN:
+            - ROLE_DASHBOARD_USER
+        ROLE_SUPER_ADMIN:
+            - ROLE_DASHBOARD_ADMIN
+            - ROLE_MANAGE_ALL
+        ROLE_API_USER:
+            - ROLE_API
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        public:
+            pattern: ^(/token)(/login)(/api/routes)(/api/doc)$
+            security: false
+        api:
+            pattern: ^(?=.*api)(?:(?!routes)(?!doc$).)*$
+            security: true
+            stateless: true
+            oauth2: true
+            switch_user: { role: ROLE_ALLOWED_TO_SWITCH, parameter: "x-switch-user" }
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/api, roles: PUBLIC_ACCESS }
+
+when@test:
+    security:
+        password_hashers:
+            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+                algorithm: auto
+                cost: 4 # Lowest possible value for bcrypt
+                time_cost: 3 # Lowest possible value for argon
+                memory_cost: 10 # Lowest possible value for argon

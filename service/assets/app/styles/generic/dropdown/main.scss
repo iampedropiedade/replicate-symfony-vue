@@ -1,0 +1,14 @@
+@import "../../variables/colors.scss";
+
+.dropdown-menu .btn-group {
+  width: 100%;
+}
+
+.dropdown-menu .btn-group:hover .dropdown-menu {
+  display: block;
+  top: -0.5rem;
+}
+
+.dropdown-menu .btn-group.dropstart .dropdown-menu {
+  right: calc(100% - 2px);
+}

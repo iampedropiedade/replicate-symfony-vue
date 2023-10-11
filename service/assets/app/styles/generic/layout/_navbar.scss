@@ -1,0 +1,37 @@
+@import "../../variables/colors.scss";
+
+.navbar {
+  background-color: $dark5;
+}
+.navbar-brand-wrapper {
+  width: 16rem;
+}
+
+.navbar-brand .logo {
+  width: 8rem;
+  margin: 0 0 0 0.75rem;
+}
+
+.navbar.fixed-top {
+  height: 65px;
+}
+
+.navbar-content {
+  width: calc(100% - 16rem);
+  display: flex !important;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.header-bar {
+  margin: 1rem 0 0 0!important;
+}

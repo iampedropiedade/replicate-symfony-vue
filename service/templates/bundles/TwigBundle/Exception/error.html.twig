@@ -1,0 +1,20 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Internal server error{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h2 class="h2">Internal server error</h2>
+    </div>
+
+    <p class="lead">
+        There was an error while accessing this resource.
+    </p>
+    <p>
+        We've logged the error on the application log.<br/>
+        Please try to reload the page or select a different option from the navigation.<br/>
+        If the error persists please <a href="{{ path('dashboard_help') }}">contact us</a>.
+    </p>
+
+{% endblock %}

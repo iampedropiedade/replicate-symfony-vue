@@ -1,0 +1,20 @@
+@import "../../variables/colors.scss";
+
+.slider {
+  --slider-bg: #464646;
+  --slider-height: 4px;
+  --slider-connect-bg: #b2b2b2;
+}
+
+.slider-volume {
+  --slider-handle-width: 12px;
+  --slider-handle-height: 12px;
+  --slider-handle-ring-color: #757575;
+  --slider-handle-ring-width: 2px;
+}
+
+.slider-seek {
+  --slider-handle-width: 0;
+  --slider-handle-height: 0;
+  --slider-handle-ring-width: 0;
+}

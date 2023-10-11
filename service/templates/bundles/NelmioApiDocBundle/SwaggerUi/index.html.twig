@@ -1,0 +1,49 @@
+{% extends '@!NelmioApiDoc/SwaggerUi/index.html.twig' %}
+
+{% block meta %}
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+{% endblock meta %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('swagger', null, 'swaggerConfig') }}
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block header_block %}
+    <header>
+        {% block header %}
+            <div class="row">
+                <div class="column column-wide">
+                    <a href="/app">
+                        App
+                    </a>
+                </div>
+                <div class="column">
+                    <a href="https://pedropiedade.com/" class="align-right" target="_blank">
+                        Pedro Piedade
+                    </a>
+                </div>
+            </div>
+        {% endblock header %}
+    </header>
+{% endblock header_block %}
+
+{% block swagger_ui %}
+    <div id="swagger-ui" class="api-platform"></div>
+{% endblock %}
+
+{% block swagger_initialization %}
+    <script type="text/javascript">
+        (function () {
+            let swaggerUI = {tagsSorter: 'alpha'};
+            window.onload = loadSwaggerUI(swaggerUI);
+        })();
+    </script>
+{% endblock swagger_initialization %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('swagger', null, 'swaggerConfig') }}
+{% endblock %}

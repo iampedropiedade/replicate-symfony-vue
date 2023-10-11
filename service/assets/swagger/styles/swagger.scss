@@ -1,0 +1,132 @@
+@import './_variables.scss';
+@import './toast.scss';
+@import './main.scss';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+html {
+  overflow: hidden;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+  background-color: #f3f3f3;
+  margin: 0;
+}
+
+header:before {
+  background-color: #312b2c;
+}
+
+
+#swagger-ui {
+  &.api-platform {
+
+    .opblock-tag {
+      margin: 1.5rem 0 1rem 0;
+    }
+
+    .auth-container {
+      .wrapper {
+        padding: 0;
+      }
+    }
+
+    .information-container {
+      &.wrapper {
+        padding: 2rem 0;
+        margin-bottom: 0;
+      }
+    }
+
+    .opblock-summary-method {
+      border-radius: 0;
+      padding: 0.8rem 0;
+    }
+
+    .btn-group {
+      .btn {
+        padding: 1rem 2rem;
+      }
+      &.try-out {
+        .btn {
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+
+    .execute-wrapper .btn {
+      width: auto;
+      padding: 1rem 2rem;
+    }
+
+    .info .title {
+      color: $bright-gray;
+    }
+
+    .opblock.opblock-get .opblock-summary-method {
+      background-color:$_color-get;
+    }
+    .opblock.opblock-put .opblock-summary-method {
+      background-color:$_color-put;
+    }
+    .opblock.opblock-post .opblock-summary-method {
+      background-color:$_color-post;
+    }
+    .opblock.opblock-patch .opblock-summary-method {
+      background-color:$_color-patch;
+    }
+    .opblock.opblock-delete .opblock-summary-method {
+      background-color:$_color-delete;
+    }
+    .opblock.opblock-deprecated .opblock-summary-method {
+      background-color:$_color-disabled;
+    }
+    .opblock.opblock-get .opblock-summary {
+      border-color:$_color-get;
+    }
+    .opblock.opblock-put .opblock-summary {
+      border-color:$_color-put;
+    }
+    .opblock.opblock-post .opblock-summary {
+      border-color:$_color-post;
+    }
+    .opblock.opblock-patch .opblock-summary {
+      border-color:$_color-patch;
+    }
+    .opblock.opblock-delete .opblock-summary {
+      border-color:$_color-delete;
+    }
+    .opblock.opblock-deprecated .opblock-summary {
+      border-color:$_color-disabled;
+    }
+
+    .btn.json-schema-form-item-add {
+      padding: 0.5rem 1rem;
+      background-color: $btn-execute-background-color-alt;
+      border-color: $btn-execute-background-color-alt;
+      color: $white;
+    }
+
+    .btn.json-schema-form-item-remove {
+      padding: 1rem;
+      background-color: $btn-cancel-border-color;
+      border-color: $btn-cancel-border-color;
+      color: #ffffff;
+      border-radius: 0 4px 4px 0;
+      height: 53px;
+      border-left: 0;
+      margin-bottom: 1px;
+    }
+
+    .json-schema-form-item {
+      input {
+        border-radius: 4px 0 0 4px;
+      }
+    }
+
+
+  }
+}

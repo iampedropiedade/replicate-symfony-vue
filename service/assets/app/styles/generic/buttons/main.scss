@@ -1,0 +1,11 @@
+@import "../../variables/colors.scss";
+.button {
+  background-color: transparent;
+  padding: 0 0.75rem;
+  border: none;
+  color: $light;
+}
+
+.button-black {
+  background-color: $black;
+}
