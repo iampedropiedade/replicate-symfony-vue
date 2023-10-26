@@ -1,0 +1,12 @@
+nelmio_cors:
+    defaults:
+        origin_regex: true
+        allow_origin:
+            - '^http://127.0.0.1+'
+            - '^https://43ca-2001-818-db86-5900-9014-57c0-f1c8-6767.ngrok-free.app+'
+        allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
+        allow_headers: ['Content-Type', 'Authorization']
+        expose_headers: ['Link']
+        max_age: 3600
+    paths:
+        '^/': null

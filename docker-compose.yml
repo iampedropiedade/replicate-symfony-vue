@@ -45,7 +45,7 @@ services:
       MERCURE_PUBLISHER_JWT_KEY: 'UJtNt9ZwXSp9evxCWELpTajBdSJWapdkhCzeGWuK4jEokdsK'
       MERCURE_SUBSCRIBER_JWT_KEY: 'UJtNt9ZwXSp9evxCWELpTajBdSJWapdkhCzeGWuK4jEokdsK'
       # Set the URL of your Symfony project (without trailing slash!) as value of the cors_origins directive
-      MERCURE_EXTRA_DIRECTIVES: "cors_origins http://127.0.0.1:8098 https://43ca-2001-818-db86-5900-9014-57c0-f1c8-6767.ngrok-free.app"
+      MERCURE_EXTRA_DIRECTIVES: "cors_origins https://43ca-2001-818-db86-5900-9014-57c0-f1c8-6767.ngrok-free.app"
     ports:
       - '8101:80'
     # Comment the following line to disable the development mode
